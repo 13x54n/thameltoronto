@@ -21,8 +21,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Menu | Thamel Toronto",
-  description: "Restaurant menu — mobile",
+  title: "Thamel Bar & Karaoke",
+  description: "Food Menu | Thamel Bar & Karaoke",
 };
 
 export default function RootLayout({
