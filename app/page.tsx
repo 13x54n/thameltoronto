@@ -120,15 +120,7 @@ const MENU = {
           name: "Mutton Bhuttan",
           description: "A stir-fried dish prepared with goat tripe and other digestive parts.",
           price: 15,
-          optionGroups: [
-            {
-              label: "Protein options",
-              choices: [
-                { name: "Beef" },
-                { name: "Buff" },
-              ],
-            },
-          ],
+          
         },
         {
           name: "Chicken Wings",
