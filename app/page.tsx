@@ -22,17 +22,17 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 const RESTAURANT = {
-  name: "Thamel Toronto",
+  name: "Thamel Bar & Karaoke",
   instagram: "https://instagram.com/thameltoronto",
   tiktok: "https://tiktok.com/@thameltoronto",
 };
 
-type OptionChoice = { name: string; price: number };
+type OptionChoice = { name: string; price?: number };
 type OptionGroup = { label: string; choices: OptionChoice[]; modifier?: boolean };
-  
+
 type MenuItemData =
   | { name: string; description?: string; price: number }
-  | { name: string; description?: string; optionGroups: OptionGroup[] };
+  | { name: string; description?: string; price?: number; optionGroups: OptionGroup[] };
 
 const MENU = {
   restaurant: RESTAURANT.name,
@@ -41,32 +41,141 @@ const MENU = {
       id: "starters",
       title: "Starters",
       items: [
+        { name: "Alu Chop", description: "Premium spiced potato patties, expertly coated in crisp chickpea flour batter for a perfect crunch.", price: 8 },
+        { name: "French Fries", description: "Thin-cut, golden potato fries with a light, crisp bite and soft, fluffy centre.", price: 8 },
+        { name: "Fried Sausage", description: "Juicy sausages lightly battered and fried to a golden crisp, bursting with savoury flavour.", price: 8 },
+        { name: "Edamame", description: "Tender, steamed soybean pods lightly salted, offering a fresh, nutty bite.", price: 7 },
         {
-          name: "Momos",
-          description: "House chutney on the side",
+          name: "Wai Wai Chatpatey",
+          description: "A tangy, spicy snack made with crunchy Wai Wai noodles, puffed rice, and fresh veggies.",
+          price: 10,
           optionGroups: [
             {
-              label: "Cook options",
+              label: "Spice Level",
               choices: [
-                { name: "Steamed", price: 12 },
-                { name: "Jhol", price: 13 },
-                { name: "Fried", price: 14 },
-              ],
-            },
-            {
-              label: "Protein options",
-              modifier: true,
-              choices: [
-                { name: "Veg", price: 0 },
-                { name: "Chicken", price: 2 },
-                { name: "Buff", price: 3 },
+                { name: "Mild (no spice)" },
+                { name: "Medium" },
+                { name: "Spicy" },
               ],
             },
           ],
         },
-        { name: "Chaat", description: "Crispy papdi, chickpeas, tamarind & mint", price: 10 },
-        { name: "Pakora", description: "Mixed vegetable fritters with cilantro chutney", price: 9 },
-        { name: "Soup of the day", description: "Ask your server", price: 8 },
+        {
+          name: "Peanut Sadeko",
+          description: "A savoury, nutty snack made with roasted peanuts, fresh herbs, and spices, served with a tangy, spicy chutney.",
+          price: 10,
+          optionGroups: [
+            {
+              label: "Spice Level",
+              choices: [
+                { name: "Mild (no spice)" },
+                { name: "Medium" },
+                { name: "Spicy" },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Bhatmas Sadeko",
+          description: "A savoury, spicy snack made with roasted soya beans, and a blend of aromatic spices, served with a tangy, spicy chutney.",
+          price: 10,
+          optionGroups: [
+            {
+              label: "Spice Level",
+              choices: [
+                { name: "Mild (no spice)" },
+                { name: "Medium" },
+                { name: "Spicy" },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Mustang Alu",
+          description: "Spicy, crunchy potato wedges from Nepal's Mustang region, fried and tossed with fiery Himalayan spices like Timur pepper, chillies, and fenugreek.",
+          price: 10,
+        },
+
+      ],
+    },
+    {
+      id: "apetizers",
+      title: "Apetizers",
+      items: [
+        {
+          name: "Sukuti",
+          description: "A dried meat product of Nepalese origin, also consumed in the Himalayan regions of India and Tibet.",
+          price: 15,
+          optionGroups: [
+            {
+              label: "Protein options",
+              choices: [
+                { name: "Beef" },
+                { name: "Buff" },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Mutton Bhuttan",
+          description: "A stir-fried dish prepared with goat tripe and other digestive parts.",
+          price: 15,
+          optionGroups: [
+            {
+              label: "Protein options",
+              choices: [
+                { name: "Beef" },
+                { name: "Buff" },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Chicken Wings",
+          description: "Tender, crispy-fried wings coated in a rich, flavour-packed sauce.",
+          price: 14,
+          optionGroups: [
+            {
+              label: "Sauce",
+              choices: [
+                { name: "Hot Buffalo" },
+                { name: "Honey Garlic" },
+                { name: "Salt & Chilli" },
+              ],
+            },
+          ],
+        },
+        { name: "Chicken Lollipop", description: "Crispy, deep-fried drumettes marinated in spicy Indo-Chinese flavours, served with a spicy-tangy dipping sauce.", price: 14 },
+        {
+          name: "Choyela",
+          description: "A typical newari dish made with grilled meat, freshly cooked with spices and vegetables.",
+          price: 15,
+          optionGroups: [
+            {
+              label: "Protein options",
+              choices: [
+                { name: "Chicken" },
+                { name: "Beef" },
+                { name: "Buff" },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Chilli",
+          description: "Spicy, tangy, and flavourful chilli sauce made with fresh chillies, tomatoes, and a blend of spices with choice of protein.",
+          price: 13,
+          optionGroups: [
+            {
+              label: "Protein options",
+              choices: [
+                { name: "Chicken" },
+                { name: "Buff" },
+                { name: "Beef" },
+              ],
+            },
+          ],
+        },
       ],
     },
     {
@@ -74,63 +183,85 @@ const MENU = {
       title: "Mains",
       items: [
         {
-          name: "Chow Mein",
-          description: "Stir-fried noodles with vegetables",
+          name: "Momo (Dumplings)",
+          description: "Choice of protein, steamed, jhol, or fried, with house chutney on the side.",
           optionGroups: [
+            {
+              label: "Protein options",
+              choices: [
+                { name: "Beef" },
+                { name: "Chicken" },
+                { name: "Buff" },
+              ],
+            },
             {
               label: "Cook options",
               choices: [
                 { name: "Steamed", price: 14 },
-                { name: "Fried", price: 16 },
+                { name: "Jhol", price: 15 },
+                { name: "Fried", price: 15 },
+                { name: "Chilli", price: 15 },
               ],
             },
+
+          ],
+        },
+        {
+          name: "Chow Mein",
+          description: "Stir-fried noodles with vegetables and your choice of protein.",
+          price: 14,
+          optionGroups: [
             {
               label: "Protein options",
               modifier: true,
               choices: [
-                { name: "Veg", price: 0 },
-                { name: "Chicken", price: 2 },
-                { name: "Buff", price: 3 },
+                { name: "Veg"},
+                { name: "Chicken" },
+                { name: "Beef" },
+                { name: "Buff" },
               ],
             },
           ],
         },
-        { name: "Butter Chicken", description: "Tandoori chicken in tomato butter sauce, basmati rice", price: 22 },
-        { name: "Lamb Curry", description: "Slow-cooked lamb, spices, rice & naan", price: 24 },
-        { name: "Dal Bhat", description: "Lentils, rice, greens, pickle & papad", price: 18 },
-        { name: "Chicken Thukpa", description: "Noodle soup with vegetables & herbs", price: 16 },
-        { name: "Paneer Tikka Masala", description: "Grilled paneer in creamy tomato sauce, rice", price: 19 },
-        { name: "Jhinga Masala", description: "Prawns in spiced tomato gravy, rice", price: 26 },
-      ],
-    },
-    {
-      id: "sides",
-      title: "Sides",
-      items: [
-        { name: "Naan", description: "Plain, garlic, or butter", price: 4 },
-        { name: "Rice", description: "Basmati or jeera", price: 5 },
-        { name: "Raita", description: "Yogurt with cucumber & mint", price: 4 },
-        { name: "Papad", description: "Crisp lentil wafers", price: 3 },
-      ],
-    },
-    {
-      id: "drinks",
-      title: "Drinks",
-      items: [
-        { name: "Lassi", description: "Sweet or salted", price: 5 },
-        { name: "Chai", description: "Masala chai", price: 4 },
-        { name: "Mango Lassi", description: "House mango blend", price: 6 },
-        { name: "Sparkling water", description: "", price: 4 },
-        { name: "Soft drinks", description: "Coke, Sprite, etc.", price: 3 },
-      ],
-    },
-    {
-      id: "desserts",
-      title: "Desserts",
-      items: [
-        { name: "Gulab Jamun", description: "Warm milk dumplings in rose syrup", price: 8 },
-        { name: "Kheer", description: "Rice pudding with cardamom & nuts", price: 8 },
-        { name: "Mango Kulfi", description: "Traditional frozen dessert", price: 9 },
+        {
+          name: "Fried Rice",
+          description: "Stir-fried rice with vegetables and your choice of protein made in Thai style.",
+          price: 14,
+          optionGroups: [
+            {
+              label: "Protein options",
+              modifier: true,
+              choices: [
+                { name: "Veg"},
+                { name: "Chicken" },
+                { name: "Beef" },
+                { name: "Buff" },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Pork Sekuwa",
+          description: "A traditional Nepalese dish made with pork marinated in spices and grilled to perfection.",
+          price: 16,
+        },
+        {
+          name: "Newari Khaja Set",
+          description: "A traditional Newari dish made with a mix of achars (pickles), puffed rice, and your choice of protein.",
+          price: 17,
+          optionGroups: [
+            {
+              label: "Protein options",
+              modifier: true,
+              choices: [
+                { name: "Chicken" },
+                { name: "Beef" },
+                { name: "Buff" },
+                { name: "Mutton" },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],
@@ -138,10 +269,18 @@ const MENU = {
 
 function MenuItem({ item }: { item: MenuItemData }) {
   if ("optionGroups" in item) {
+    const hasItemPrice = "price" in item && item.price !== undefined;
     return (
       <li className="border-b border-[var(--border)] py-4 last:border-0">
         <div className="min-w-0">
-          <h3 className="font-semibold text-[var(--foreground)]">{item.name}</h3>
+          <div className="flex justify-between gap-3">
+            <h3 className="font-semibold text-[var(--foreground)]">{item.name}</h3>
+            {hasItemPrice ? (
+              <span className="shrink-0 font-medium tabular-nums text-[var(--accent)]">
+                ${item.price}
+              </span>
+            ) : null}
+          </div>
           {item.description ? (
             <p className="mt-0.5 text-sm text-[var(--muted)]">{item.description}</p>
           ) : null}
@@ -158,13 +297,15 @@ function MenuItem({ item }: { item: MenuItemData }) {
                       className="flex justify-between gap-3 text-sm text-[var(--muted)]"
                     >
                       <span>{choice.name}</span>
-                      <span className="shrink-0 font-medium tabular-nums text-[var(--accent)]">
-                        {group.modifier
-                          ? choice.price === 0
-                            ? "included"
-                            : `+$${choice.price}`
-                          : `$${choice.price}`}
-                      </span>
+                      {choice.price !== undefined ? (
+                        <span className="shrink-0 font-medium tabular-nums text-[var(--accent)]">
+                          {group.modifier
+                            ? choice.price === 0
+                              ? "included"
+                              : `+$${choice.price}`
+                            : `$${choice.price}`}
+                        </span>
+                      ) : null}
                     </li>
                   ))}
                 </ul>
@@ -216,7 +357,7 @@ export default function Home() {
               />
               <div className="flex flex-col">
                 <p className="text-sm font-semibold text-[var(--foreground)]">{MENU.restaurant}</p>
-                <p className="text-sm text-[var(--muted)]">Menu</p>
+                <p className="text-sm text-[var(--muted)]">Food Menu</p>
               </div>
             </div>
             <div className="flex items-center gap-5">
@@ -249,11 +390,10 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => setSelectedCategory(ALL_ID)}
-                className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--accent)] ${
-                  selectedCategory === ALL_ID
-                    ? "bg-[var(--accent)] text-[var(--background)]"
-                    : "bg-[var(--border)] text-[var(--foreground)] hover:bg-[var(--accent)] hover:text-[var(--background)]"
-                }`}
+                className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--accent)] ${selectedCategory === ALL_ID
+                  ? "bg-[var(--accent)] text-[var(--background)]"
+                  : "bg-[var(--border)] text-[var(--foreground)] hover:bg-[var(--accent)] hover:text-[var(--background)]"
+                  }`}
               >
                 All
               </button>
@@ -262,11 +402,10 @@ export default function Home() {
                   key={section.id}
                   type="button"
                   onClick={() => setSelectedCategory(section.id)}
-                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--accent)] ${
-                    selectedCategory === section.id
-                      ? "bg-[var(--accent)] text-[var(--background)]"
-                      : "bg-[var(--border)] text-[var(--foreground)] hover:bg-[var(--accent)] hover:text-[var(--background)]"
-                  }`}
+                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--accent)] ${selectedCategory === section.id
+                    ? "bg-[var(--accent)] text-[var(--background)]"
+                    : "bg-[var(--border)] text-[var(--foreground)] hover:bg-[var(--accent)] hover:text-[var(--background)]"
+                    }`}
                 >
                   {section.title}
                 </button>
