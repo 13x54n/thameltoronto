@@ -103,6 +103,21 @@ const MENU = {
       title: "Apetizers",
       items: [
         {
+          name: "Chicken Platter",
+          description: "A perfect combination of chilly, cruncy, and street flavoured chicken & sauces served in single plate",
+          price: 16,
+          optionGroups: [
+            {
+              label: "What's Included",
+              choices: [
+                { name: "Chilly Lolipop - 4pcs" },
+                { name: "Fried Wings - 4pcs" },
+                { name: "Sausages - 5pcs" },
+              ],
+            },
+          ],
+        },
+        {
           name: "Sukuti",
           description: "A dried meat product of Nepalese origin, also consumed in the Himalayan regions of India and Tibet.",
           price: 15,
@@ -116,12 +131,13 @@ const MENU = {
             },
           ],
         },
-        {
+        /** {
           name: "Mutton Bhuttan",
           description: "A stir-fried dish prepared with goat tripe and other digestive parts.",
           price: 15,
           
         },
+        */
         {
           name: "Chicken Wings",
           description: "Tender, crispy-fried wings coated in a rich, flavour-packed sauce.",
